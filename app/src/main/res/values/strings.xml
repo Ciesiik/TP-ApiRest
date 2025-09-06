@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">TP-ApiRest</string>
+    <string name="ingresar_usuario">Ingresar Usuario</string>
+    <string name="nombre_de_usuario">Nombre de usuario</string>
+    <string name="ingresar_contraseña">Ingresar Contraseña</string>
+    <string name="contraseña">Contraseña</string>
+    <string name="recordar_usuario">Recordar usuario</string>
+    <string name="iniciar_sesion">INICIAR SESIÓN</string>
+    <string name="registrarse">REGISTRARSE</string>
 </resources>
