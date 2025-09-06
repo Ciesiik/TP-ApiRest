@@ -40,10 +40,10 @@ class LoginActivity : AppCompatActivity() {
             if(etUsuario.text.toString().isEmpty() || etContraseña.text.toString().isEmpty()){
                 Toast.makeText(this, "Completar datos", Toast.LENGTH_SHORT).show()
             } else {
-                // val intent = Intent(this, TerminosYCondicionesActivity::class.java)
-                // intent.putExtra("NOMBRE", etUsuario.text.toString())
-                // startActivity(intent)
-                // finish()
+                val intent = Intent(this, TerminosYCondicionesActivity::class.java)
+                intent.putExtra("NOMBRE", etUsuario.text.toString())
+                startActivity(intent)
+                finish()
             }
         }
 
