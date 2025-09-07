@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tp_apirest.DetallesActivity
+
 import com.example.tp_apirest.R
 
 class ElementosAdapter (var elementos: MutableList<Elemento>, var context: Context): RecyclerView.Adapter<ElementosAdapter.ElementoViewHolder>() {

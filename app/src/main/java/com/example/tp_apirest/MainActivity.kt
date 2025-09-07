@@ -63,7 +63,6 @@ class MainActivity : AppCompatActivity() {
         elementos.add(Elemento(24, "Mi Próximo Movimiento", "Él Mató a un Policía Motorizado", "2014", "Existencial y directa, sobre decisiones personales.", "04:05", 18, "https://www.youtube.com/watch?v=JFVaBjSGzv4"))
         elementos.add(Elemento(25, "El Magnetismo", "Él Mató a un Policía Motorizado", "2017", "Repetitiva y hipnótica, sobre atracción y destino.", "03:50", 19, "https://www.youtube.com/watch?v=oAjRk-7e7eY"))
 
-
         return elementos
     }
 }
