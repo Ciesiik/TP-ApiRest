@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TPApiRest">
         <activity
+            android:name=".DetallesActivity"
+            android:exported="false" />
+        <activity
             android:name=".TerminosYCondicionesActivity"
             android:exported="false" />
         <activity
