@@ -42,6 +42,23 @@ class MainActivity : AppCompatActivity() {
         saludarUsuario()
 
 
+
+    }
+
+    private fun saludarUsuario() {
+        val bundle: Bundle? = intent.extras
+        if(bundle != null){
+            val usuario = bundle.getString("NOMBRE")
+            Toast.makeText(this, "Bienvenido/a $usuario", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun saludarUsuario() {
+        val bundle: Bundle? = intent.extras
+        if(bundle != null){
+            val usuario = bundle.getString("NOMBRE")
+            Toast.makeText(this, "Bienvenido/a $usuario", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun saludarUsuario() {
