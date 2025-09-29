@@ -4,6 +4,7 @@ import Elemento
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -13,6 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var rvElementos: RecyclerView
     lateinit var elementosAdapter: ElementosAdapter
+    lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +29,11 @@ class MainActivity : AppCompatActivity() {
         rvElementos = findViewById(R.id.rvElementos)
         elementosAdapter = ElementosAdapter(getElementos(), this)
         rvElementos.adapter = elementosAdapter
+        toolbar = findViewById(R.id.toolbar)
+
+        setSupportActionBar(toolbar)
+        val titulo = resources.getString(R.string.app_name) + resources.getString(R.string.songlist)
+        supportActionBar!!.title = titulo
 
 
     }

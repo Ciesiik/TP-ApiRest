@@ -6,12 +6,14 @@ import android.util.Log
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class TerminosYCondicionesActivity : AppCompatActivity() {
 
     lateinit var btnAceptar: Button
+    lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +26,11 @@ class TerminosYCondicionesActivity : AppCompatActivity() {
         }
 
         btnAceptar = findViewById(R.id.btnAceptar)
+        toolbar = findViewById(R.id.toolbar)
+
+        setSupportActionBar(toolbar)
+        val titulo = resources.getString(R.string.app_name) + resources.getString(R.string.terms)
+        supportActionBar!!.title = titulo
 
         var usuario: String? = null
 

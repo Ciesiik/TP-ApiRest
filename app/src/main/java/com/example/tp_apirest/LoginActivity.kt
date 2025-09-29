@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
@@ -19,6 +20,7 @@ class LoginActivity : AppCompatActivity() {
     lateinit var btnRegistro: Button
     lateinit var btnInicio: Button
     lateinit var cbRecordarUsuario: CheckBox
+    lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +37,11 @@ class LoginActivity : AppCompatActivity() {
         btnRegistro = findViewById(R.id.btnRegistro)
         btnInicio = findViewById(R.id.btnInicio)
         cbRecordarUsuario = findViewById(R.id.cbRecordarUsuario)
+        toolbar = findViewById(R.id.toolbar)
+
+        setSupportActionBar(toolbar)
+        val titulo = resources.getString(R.string.app_name) + resources.getString(R.string.login)
+        supportActionBar!!.title = titulo
 
         btnRegistro.setOnClickListener {
             if(etUsuario.text.toString().isEmpty() || etContraseña.text.toString().isEmpty()){

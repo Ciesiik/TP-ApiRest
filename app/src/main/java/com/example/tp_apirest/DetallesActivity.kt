@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
@@ -21,6 +22,7 @@ class DetallesActivity : AppCompatActivity() {
     lateinit var tvFecha: TextView
     lateinit var tvDescripcion: TextView
     lateinit var btnReproducir: Button
+    lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +41,11 @@ class DetallesActivity : AppCompatActivity() {
         tvFecha = findViewById(R.id.tvFecha)
         tvDescripcion = findViewById(R.id.tvDescripcion)
         btnReproducir = findViewById(R.id.btnReproducir)
+        toolbar = findViewById(R.id.toolbar)
+
+        setSupportActionBar(toolbar)
+        val titulo = resources.getString(R.string.app_name) + resources.getString(R.string.details)
+        supportActionBar!!.title = titulo
 
         val bundle: Bundle? = intent.extras
         if(bundle != null){
