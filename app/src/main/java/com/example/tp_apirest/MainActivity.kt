@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -35,10 +36,21 @@ class MainActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
 
         setSupportActionBar(toolbar)
-        val titulo = resources.getString(R.string.app_name) + resources.getString(R.string.songlist)
+        val titulo = resources.getString(R.string.dezero) + resources.getString(R.string.songlist)
         supportActionBar!!.title = titulo
 
+        saludarUsuario()
 
+
+
+    }
+
+    private fun saludarUsuario() {
+        val bundle: Bundle? = intent.extras
+        if(bundle != null){
+            val usuario = bundle.getString("NOMBRE")
+            Toast.makeText(this, "Bienvenido/a $usuario", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun getElementos(): MutableList<Elemento> {
@@ -89,6 +101,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun cerrarSesion() {
+        val preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
+        preferencias.edit().clear().apply()
+
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         finish()

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DeZero</string>
+    <string name="app_name">Tp-ApiRest</string>
     <string name="ingresar_usuario">Ingresar Usuario</string>
     <string name="nombre_de_usuario">Nombre de usuario</string>
     <string name="ingresar_contraseña">Ingresar Contraseña</string>
@@ -15,9 +15,13 @@
     <string name="autor">"Autor: "</string>
     <string name="duracion">"Duración: "</string>
     <string name="fecha_lanzamiento">"Año: "</string>
+    <string name="dezero">"DeZero"</string>
     <string name="login">: Login</string>
     <string name="songlist">: Songs</string>
     <string name="terms">: Terms and conditions</string>
     <string name="details">: Details</string>
     <string name="boton_cerrar_sesion">Cerrar sesión</string>
+    <string name="nombre">NOMBRE</string>
+    <string name="password">PASSWORD</string>
+    <string name="sp_credenciales">SHARED_PREFERENCES</string>
 </resources>
