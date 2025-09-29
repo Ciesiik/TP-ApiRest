@@ -8,6 +8,11 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/primary_toolbar">
+    </include>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvElementos"
         android:layout_width="match_parent"
