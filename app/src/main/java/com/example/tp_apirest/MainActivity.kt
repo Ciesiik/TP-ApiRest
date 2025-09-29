@@ -1,7 +1,10 @@
 package com.example.tp_apirest
 
 import Elemento
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -71,5 +74,23 @@ class MainActivity : AppCompatActivity() {
         elementos.add(Elemento(25, "El Magnetismo", "Él Mató a un Policía Motorizado", "2017", "Repetitiva y hipnótica, sobre atracción y destino.", "03:50", 19, "https://youtu.be/fjoHQg4i1vk?si=iFt_vfFBeMh_Sf8f"))
 
         return elementos
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.item_cerrar_sesion){
+            cerrarSesion()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun cerrarSesion() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
