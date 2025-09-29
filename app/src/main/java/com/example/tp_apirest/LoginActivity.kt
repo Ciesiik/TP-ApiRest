@@ -2,7 +2,6 @@ package com.example.tp_apirest
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
@@ -40,8 +39,15 @@ class LoginActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
 
         setSupportActionBar(toolbar)
-        val titulo = resources.getString(R.string.app_name) + resources.getString(R.string.login)
+        val titulo = resources.getString(R.string.dezero) + resources.getString(R.string.login)
         supportActionBar!!.title = titulo
+
+        var preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
+        var usuarioGuardado = preferencias.getString(resources.getString(R.string.nombre), "")
+        var passwordGuardado = preferencias.getString(resources.getString(R.string.password), "")
+
+        if(usuarioGuardado!!.isNotEmpty() && passwordGuardado!!.isNotEmpty())
+            iniciarActividadPrincipal(usuarioGuardado!!)
 
         btnRegistro.setOnClickListener {
             if(etUsuario.text.toString().isEmpty() || etContraseña.text.toString().isEmpty()){
@@ -59,15 +65,24 @@ class LoginActivity : AppCompatActivity() {
             if(etUsuario.text.toString().isEmpty() || etContraseña.text.toString().isEmpty()){
                 Toast.makeText(this, "Completar datos", Toast.LENGTH_SHORT).show()
             } else{
-                if(cbRecordarUsuario.isChecked)
-                    Log.i("TODO", "Funcionalidad de Recordar Usuario")
-
-                val intent = Intent(this, MainActivity::class.java)
-                intent.putExtra("NOMBRE", etUsuario.text.toString())
-                startActivity(intent)
-                finish()
+                login(etUsuario.text.toString(), etContraseña.text.toString())
             }
         }
 
+    }
+    private fun iniciarActividadPrincipal(usuario: String) {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("NOMBRE", usuario)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun login(usuario: String, contraseña: String) {
+        if(cbRecordarUsuario.isChecked){
+            var preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
+            preferencias.edit().putString(resources.getString(R.string.nombre), usuario).apply()
+            preferencias.edit().putString(resources.getString(R.string.password), contraseña).apply()
+        }
+        iniciarActividadPrincipal(etUsuario.text.toString())
     }
 }

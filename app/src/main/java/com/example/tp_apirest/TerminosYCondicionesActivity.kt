@@ -29,7 +29,7 @@ class TerminosYCondicionesActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
 
         setSupportActionBar(toolbar)
-        val titulo = resources.getString(R.string.app_name) + resources.getString(R.string.terms)
+        val titulo = resources.getString(R.string.dezero) + resources.getString(R.string.terms)
         supportActionBar!!.title = titulo
 
         var usuario: String? = null

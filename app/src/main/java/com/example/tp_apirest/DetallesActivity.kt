@@ -46,7 +46,7 @@ class DetallesActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
 
         setSupportActionBar(toolbar)
-        val titulo = resources.getString(R.string.app_name) + resources.getString(R.string.details)
+        val titulo = resources.getString(R.string.dezero) + resources.getString(R.string.details)
         supportActionBar!!.title = titulo
 
         val bundle: Bundle? = intent.extras
