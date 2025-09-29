@@ -61,6 +61,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun saludarUsuario() {
+        val bundle: Bundle? = intent.extras
+        if(bundle != null){
+            val usuario = bundle.getString("NOMBRE")
+            Toast.makeText(this, "Bienvenido/a $usuario", Toast.LENGTH_SHORT).show()
+        }
+    }
+
     private fun getElementos(): MutableList<Elemento> {
         var elementos: MutableList<Elemento> = ArrayList()
         elementos.add(Elemento(1, "Stressed Out", "Twenty One Pilots", "2015", "Himno generacional sobre la ansiedad adulta y la nostalgia por la infancia.", "03:45", 1, "https://www.youtube.com/watch?v=pXRviuL6vMY"))

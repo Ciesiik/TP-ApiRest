@@ -4,11 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import kotlin.concurrent.thread
 
 class TerminosYCondicionesActivity : AppCompatActivity() {
 
@@ -32,20 +34,27 @@ class TerminosYCondicionesActivity : AppCompatActivity() {
         val titulo = resources.getString(R.string.dezero) + resources.getString(R.string.terms)
         supportActionBar!!.title = titulo
 
-        var usuario: String? = null
+        var nombre: String? = null
+        var contraseña: String? = null
 
         val bundle: Bundle? = intent.extras
         if(bundle != null){
-            usuario = bundle.getString("NOMBRE")
+            nombre = bundle.getString("NOMBRE")
+            contraseña = bundle.getString("CONTRASEÑA")
         }
 
         btnAceptar.setOnClickListener {
-            Log.i("TODO", "Registrar la aceptación de los términos")
-
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("NOMBRE", usuario)
-            startActivity(intent)
-            finish()
+            thread {
+                var nuevoUsuario = Usuario(nombre!!, contraseña!!)
+                AppDatabase.getDatabase(applicationContext).usuarioDao().insert(nuevoUsuario)
+                    runOnUiThread {
+                        Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, MainActivity::class.java)
+                        intent.putExtra("NOMBRE", nombre)
+                        startActivity(intent)
+                        finish()
+                    }
+            }
         }
     }
 }

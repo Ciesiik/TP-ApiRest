@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import kotlin.concurrent.thread
 
 class LoginActivity : AppCompatActivity() {
 
@@ -50,13 +51,27 @@ class LoginActivity : AppCompatActivity() {
             iniciarActividadPrincipal(usuarioGuardado!!)
 
         btnRegistro.setOnClickListener {
-            if(etUsuario.text.toString().isEmpty() || etContraseña.text.toString().isEmpty()){
+            val nombre = etUsuario.text.toString()
+            val contraseña = etContraseña.text.toString()
+
+            if (nombre.isEmpty() || contraseña.isEmpty()) {
                 Toast.makeText(this, "Completar datos", Toast.LENGTH_SHORT).show()
             } else {
-                val intent = Intent(this, TerminosYCondicionesActivity::class.java)
-                intent.putExtra("NOMBRE", etUsuario.text.toString())
-                startActivity(intent)
-                finish()
+                thread {
+                    val dao = AppDatabase.getDatabase(applicationContext).usuarioDao()
+                    val existente = dao.buscarUsuario(nombre)
+
+                    runOnUiThread {
+                        if (existente != null) {
+                            Toast.makeText(this, "El nombre de usuario ya está registrado", Toast.LENGTH_SHORT).show()
+                        } else {
+                            val intent = Intent(this, TerminosYCondicionesActivity::class.java)
+                            intent.putExtra("NOMBRE", nombre)
+                            intent.putExtra("CONTRASEÑA", contraseña)
+                            startActivity(intent)
+                        }
+                    }
+                }
             }
         }
 
@@ -78,11 +93,22 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login(usuario: String, contraseña: String) {
-        if(cbRecordarUsuario.isChecked){
-            var preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
-            preferencias.edit().putString(resources.getString(R.string.nombre), usuario).apply()
-            preferencias.edit().putString(resources.getString(R.string.password), contraseña).apply()
+        thread {
+            val dao = AppDatabase.getDatabase(applicationContext).usuarioDao()
+            val usuarioEncontrado = dao.login(usuario, contraseña)
+
+            runOnUiThread {
+                if (usuarioEncontrado != null) {
+                    if(cbRecordarUsuario.isChecked){
+                        var preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
+                        preferencias.edit().putString(resources.getString(R.string.nombre), usuario).apply()
+                        preferencias.edit().putString(resources.getString(R.string.password), contraseña).apply()
+                    }
+                    iniciarActividadPrincipal(etUsuario.text.toString())
+                } else {
+                    Toast.makeText(this, "Nombre de usuario y/o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
-        iniciarActividadPrincipal(etUsuario.text.toString())
     }
 }
