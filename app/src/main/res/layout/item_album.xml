@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="5dp"
+    android:gravity="center_vertical"
+    android:layout_margin="8dp"
+    android:background="@color/amarillo"
+    >
+
+    <ImageView
+        android:id="@+id/ivPortada"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_gravity="top"
+        android:background="@color/gris"
+        android:paddingTop="5dp"
+        android:paddingLeft="8dp"
+        android:paddingBottom="5dp"
+        android:paddingEnd="5dp">
+
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Textview"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"/>
+
+        <TextView
+            android:id="@+id/tvAutor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textStyle="italic"
+            android:text="Textview"
+            android:textSize="16sp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"/>
+
+        <TextView
+            android:id="@+id/tvAlbumTipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Textview"
+            android:textSize="14sp"
+            android:textColor="@color/menu"
+            android:textStyle="bold"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"/>
+
+    </LinearLayout>
+</LinearLayout>

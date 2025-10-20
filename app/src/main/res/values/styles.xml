@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MiEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/gris</item>
+    </style>
+
+    <style name="MiCheckBox" parent="Widget.Material3.CompoundButton.CheckBox">
+        <item name="buttonTint">@color/amarillo</item>
+        <item name="android:textColor">@color/gris</item>
+        <item name="checkedIconTint">@color/black</item>
+    </style>
+
+    <style name="MiOverflowButton" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">@color/white</item>
+    </style>
+
+    <style name="MiPopupMenu" parent="Widget.AppCompat.PopupMenu.Overflow">
+        <item name="popupMenuBackground">@color/menu</item>
+        <item name="android:background">@color/menu</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
+
+</resources>
