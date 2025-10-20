@@ -13,11 +13,6 @@
         layout="@layout/primary_toolbar">
     </include>
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/primary_toolbar">
-    </include>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

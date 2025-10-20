@@ -47,5 +47,6 @@
     <string name="toptracks">TOP TRACKS</string>
     <string name="artist">Artist</string>
     <string name="textView">TextView</string>
+    <string name="funcionRU">Función recordar usuario</string>
 
 </resources>
