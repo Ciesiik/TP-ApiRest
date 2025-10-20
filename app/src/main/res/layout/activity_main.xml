@@ -5,19 +5,51 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
+    tools:context=".activities.MainActivity"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/background">
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/primary_toolbar">
-    </include>
+        layout="@layout/primary_toolbar"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvElementos"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_elemento"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/btnTracks"
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight="0.5"
+            android:layout_margin="7dp"
+            android:background="@drawable/item_background"
+            android:text="@string/canciones"
+            android:textSize="20sp"/>
+
+        <Button
+            android:id="@+id/btnAlbums"
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight="0.5"
+            android:layout_margin="7dp"
+            android:background="@drawable/item_background"
+            android:text="@string/albumes"
+            android:textSize="20sp"/>
+
+        <Button
+            android:id="@+id/btnArtistas"
+            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_weight="0.5"
+            android:layout_margin="7dp"
+            android:background="@drawable/item_background"
+            android:text="@string/artistas"
+            android:textSize="20sp"/>
+    </LinearLayout>
 
 </LinearLayout>

@@ -5,15 +5,21 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".activities.LoginActivity">
 
     <include
         android:id="@+id/toolbar"
         layout="@layout/primary_toolbar">
     </include>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:padding="15dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -53,10 +59,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:text="@string/recordar_usuario"
-        android:textSize="15sp" />
+        android:textSize="15sp"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
         android:orientation="horizontal"
@@ -66,7 +72,6 @@
             android:id="@+id/btnInicio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/purple"
             android:layout_marginEnd="5dp"
             android:layout_weight="0.5"
             android:text="@string/iniciar_sesion" />
@@ -75,10 +80,11 @@
             android:id="@+id/btnRegistro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/purple"
             android:layout_marginStart="5dp"
             android:layout_weight="0.5"
             android:text="@string/registrarse" />
+
+    </LinearLayout>
 
     </LinearLayout>
 

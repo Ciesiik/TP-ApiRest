@@ -2,7 +2,14 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="items">#2E2E2E</color>
+    <color name="background">#1A1A1A</color>
+    <color name="menu">#403F3F</color>
+    <color name="gris">#817F7F</color>
     <color name="dk_purple">#622091</color>
     <color name="lt_purple">#b668ed</color>
     <color name="purple">#891cd6</color>
+    <color name="lt_amarillo">#DCB156</color>
+    <color name="amarillo">#E4B118</color>
+    <color name="naranja">#CA7A20</color>
 </resources>

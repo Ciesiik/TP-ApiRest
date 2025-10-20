@@ -3,6 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/item_ver_favoritos"
+        android:title="@string/ver_favoritos"
+        app:showAsAction="never"/>
+    <item
         android:id="@+id/item_cerrar_sesion"
         android:title="@string/boton_cerrar_sesion"
         app:showAsAction="never"/>
