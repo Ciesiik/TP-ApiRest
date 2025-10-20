@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
@@ -120,11 +121,20 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun cerrarSesion() {
-        val preferencias = getSharedPreferences(resources.getString(R.string.sp_credenciales), MODE_PRIVATE)
-        preferencias.edit().clear().apply()
+        AlertDialog.Builder(this)
+            .setMessage("¿Seguro que quieres cerrar sesión?")
+            .setPositiveButton("Cerrar sesión") { _, _ ->
+                val preferencias = getSharedPreferences(
+                    resources.getString(R.string.sp_credenciales),
+                    MODE_PRIVATE
+                )
+                preferencias.edit().clear().apply()
 
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
-        finish()
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+            .setNegativeButton("Cancelar", null)
+            .show()
     }
 }

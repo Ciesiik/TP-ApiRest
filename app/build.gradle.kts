@@ -50,6 +50,8 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("de.hdodenhof:circleimageview:3.1.0")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1")
+    implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
 
     val room_version = "2.8.1"
     implementation("androidx.room:room-runtime:$room_version")
