@@ -13,7 +13,8 @@
         android:id="@+id/ivPortada"
         android:layout_width="170dp"
         android:layout_height="170dp"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:contentDescription="Album Cover"/>
 
     <LinearLayout
         android:layout_width="0dp"
@@ -21,9 +22,9 @@
         android:layout_weight="1"
         android:orientation="vertical"
         android:layout_gravity="top"
-        android:background="@color/gris"
+        android:background="@color/album"
         android:paddingTop="5dp"
-        android:paddingLeft="8dp"
+        android:paddingStart="8dp"
         android:paddingBottom="5dp"
         android:paddingEnd="5dp">
 
@@ -31,7 +32,7 @@
             android:id="@+id/tvTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Textview"
+            android:text="@string/textView"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@color/black"
@@ -46,7 +47,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textStyle="italic"
-            android:text="Textview"
+            android:text="@string/textView"
             android:textSize="16sp"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="3dp"/>
@@ -55,7 +56,7 @@
             android:id="@+id/tvAlbumTipo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Textview"
+            android:text="@string/textView"
             android:textSize="14sp"
             android:textColor="@color/menu"
             android:textStyle="bold"

@@ -5,30 +5,27 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.tp_apirest.R
-import com.example.tp_apirest.activities.album.AlbumsActivity
-import com.example.tp_apirest.activities.artist.ArtistsActivity
-import com.example.tp_apirest.activities.track.TracksActivity
 import com.example.tp_apirest.db.AppDatabase
 import com.example.tp_apirest.db.FavoritoDao
+import com.example.tp_apirest.fragmentos.FragmentoBusqueda
+import com.example.tp_apirest.fragmentos.PrimerFragmento
+import com.example.tp_apirest.fragmentos.PrimerFragmentoInterfaz
 import kotlin.concurrent.thread
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), PrimerFragmentoInterfaz {
 
     lateinit var toolbar: Toolbar
-    lateinit var btnTracks: Button
-    private lateinit var btnAlbums: Button
-    private lateinit var btnArtistas: Button
     private lateinit var favoritoDao: FavoritoDao
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +37,11 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val primerFragmento = supportFragmentManager
+            .findFragmentById(R.id.contenedor_primer_fragmento) as? PrimerFragmento
+        primerFragmento?.listener = this
+
 
         toolbar = findViewById(R.id.toolbar)
         favoritoDao = AppDatabase.getDatabase(applicationContext).favoritoDao()
@@ -57,27 +59,6 @@ class MainActivity : AppCompatActivity() {
         }
         toolbar.addView(titleView)
 
-
-        saludarUsuario()
-
-        btnTracks = findViewById(R.id.btnTracks)
-        btnAlbums = findViewById(R.id.btnAlbums)
-        btnArtistas = findViewById(R.id.btnArtistas)
-
-        btnTracks.setOnClickListener {
-            var intent = Intent(this, TracksActivity::class.java)
-            startActivity(intent)
-        }
-
-        btnAlbums.setOnClickListener {
-            var intent = Intent(this, AlbumsActivity::class.java)
-            startActivity(intent)
-        }
-
-        btnArtistas.setOnClickListener {
-            var intent = Intent(this, ArtistsActivity::class.java)
-            startActivity(intent)
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -92,14 +73,6 @@ class MainActivity : AppCompatActivity() {
             verFavoritos()
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    private fun saludarUsuario() {
-        val bundle: Bundle? = intent.extras
-        if(bundle != null){
-            val usuario = bundle.getString("NOMBRE")
-            Toast.makeText(this, "Bienvenido/a $usuario", Toast.LENGTH_SHORT).show()
-        }
     }
 
     private fun verFavoritos() {
@@ -121,9 +94,9 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun cerrarSesion() {
-        AlertDialog.Builder(this)
+        val dialog = AlertDialog.Builder(this, R.style.MiAlertDialog)
             .setMessage("¿Seguro que quieres cerrar sesión?")
-            .setPositiveButton("Cerrar sesión") { _, _ ->
+            .setPositiveButton("CERRAR SESIÓN") { _, _ ->
                 val preferencias = getSharedPreferences(
                     resources.getString(R.string.sp_credenciales),
                     MODE_PRIVATE
@@ -134,7 +107,21 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
-            .setNegativeButton("Cancelar", null)
+            .setNegativeButton("CANCELAR", null)
             .show()
+
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE)?.setTextColor(ContextCompat.getColor(this, R.color.amarillo))
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE)?.setTextColor(ContextCompat.getColor(this, R.color.white))
+    }
+
+    override fun mostrarBusqueda(){
+        val yaVisible = supportFragmentManager.findFragmentByTag("fragmento_busqueda") != null
+        if (!yaVisible) {
+            val fragmentoBusqueda = FragmentoBusqueda()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.contenedor_fragmento_busqueda, fragmentoBusqueda, "fragmento_busqueda")
+                .addToBackStack(null)
+                .commit()
+        }
     }
 }

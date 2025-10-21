@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rowCount="2"
+        android:columnCount="2"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:layout_gravity="center"
+        android:background="@color/items">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginEnd="8dp">
+
+            <ImageButton
+                android:id="@+id/btnTracks"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/cancion"
+                android:background="@drawable/item_background"
+                android:contentDescription="Ver tracks" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/canciones"
+                android:textSize="12sp"
+                android:layout_marginBottom="4dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/btnAlbums"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/album"
+                android:background="@drawable/item_background"
+                android:contentDescription="Ver albumes" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/albumes"
+                android:textSize="12sp"
+                android:layout_marginBottom="4dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/btnArtists"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/artista"
+                android:background="@drawable/item_background"
+                android:contentDescription="Ver artistas" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/artistas"
+                android:textSize="12sp"
+                android:layout_marginBottom="4dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/btnBuscar"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/lupa"
+                android:background="@drawable/item_background"
+                android:contentDescription="Buscar" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/buscar"
+                android:textSize="12sp"
+                android:layout_marginBottom="4dp"/>
+        </LinearLayout>
+    </GridLayout>
+
+</FrameLayout>

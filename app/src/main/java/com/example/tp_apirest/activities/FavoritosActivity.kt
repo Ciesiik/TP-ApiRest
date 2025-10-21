@@ -26,7 +26,6 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlin.concurrent.thread
 
 class FavoritosActivity : AppCompatActivity() {
     lateinit var toolbar: Toolbar
@@ -114,11 +113,11 @@ class FavoritosActivity : AppCompatActivity() {
 
 
     private fun toggleFavorito(track: TrackItem) {
-        thread {
-            favoritoDao.eliminarFavorito(usuarioId, track.id)
-            runOnUiThread {
-                cargarFavoritos() // recargar lista
+        lifecycleScope.launch {
+            withContext(Dispatchers.IO) {
+                favoritoDao.eliminarFavorito(usuarioId, track.id)
             }
+            cargarFavoritos() // recargar lista
         }
     }
 
@@ -128,11 +127,18 @@ class FavoritosActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.item_back) {
+        if (item.itemId == R.id.item_back) {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
         return super.onOptionsItemSelected(item)
     }
+
+    override fun onResume() {
+        super.onResume()
+            cargarFavoritos()
+    }
+
+
 }

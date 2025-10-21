@@ -15,49 +15,49 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="8dp">
+        android:padding="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imgFotoArtista"
-                android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:layout_gravity="center"
-                android:src="@drawable/placeholder"
-                app:civ_border_color="@color/amarillo"
-                app:civ_border_width="2dp" />
-
-            <TextView
-                android:id="@+id/tvNombreArtista"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="12dp"
-                android:text="@string/textView"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-
-            <TextView
-                android:id="@+id/tvSeguidores"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="2dp"
-                android:text="@string/textView"
-                android:textSize="14sp" />
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="18dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/bg_tv"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingVertical="8dp"
+                    android:text="@string/canciones"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/white" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvTracks"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:background="@drawable/bg_rv"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_track" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/bg_tv"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -75,7 +75,7 @@
 
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvAlbumes"
+                    android:id="@+id/rvAlbums"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:background="@drawable/bg_rv"
@@ -96,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:paddingVertical="8dp"
-                    android:text="@string/toptracks"
+                    android:text="@string/artistas"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -107,15 +107,14 @@
 
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvTopTracks"
+                    android:id="@+id/rvArtists"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:background="@drawable/bg_rv"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    tools:listitem="@layout/item_track" />
+                    tools:listitem="@layout/item_artist" />
 
             </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 

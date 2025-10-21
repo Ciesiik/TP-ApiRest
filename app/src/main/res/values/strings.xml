@@ -25,7 +25,7 @@
     <string name="userid">USERID</string>
     <string name="sp_credenciales">SHARED_PREFERENCES</string>
     <string name="canciones">CANCIONES</string>
-    <string name="albumes">ÁLBUMES</string>
+    <string name="albumes">ALBUMES</string>
     <string name="artistas">ARTISTAS</string>
     <string name="buscar">BUSCAR</string>
     <string name="image">imagen</string>
@@ -48,5 +48,7 @@
     <string name="artist">Artist</string>
     <string name="textView">TextView</string>
     <string name="funcionRU">Función recordar usuario</string>
+    <string name="resultados">"Buscar: "</string>
+    <string name="pistaBuscar">Buscar canción, álbum o artista...</string>
 
 </resources>

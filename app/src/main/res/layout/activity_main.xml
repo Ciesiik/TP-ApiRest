@@ -14,42 +14,21 @@
         android:id="@+id/toolbar"
         layout="@layout/primary_toolbar"/>
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/contenedor_fragmento_busqueda"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".1"/>
+
+    <fragment
+        android:id="@+id/contenedor_primer_fragmento"
+        class="com.example.tp_apirest.fragmentos.PrimerFragmento"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical"
-        android:padding="16dp">
-
-        <Button
-            android:id="@+id/btnTracks"
-            android:layout_height="0dp"
-            android:layout_width="match_parent"
-            android:layout_weight="0.5"
-            android:layout_margin="7dp"
-            android:background="@drawable/item_background"
-            android:text="@string/canciones"
-            android:textSize="20sp"/>
-
-        <Button
-            android:id="@+id/btnAlbums"
-            android:layout_height="0dp"
-            android:layout_width="match_parent"
-            android:layout_weight="0.5"
-            android:layout_margin="7dp"
-            android:background="@drawable/item_background"
-            android:text="@string/albumes"
-            android:textSize="20sp"/>
-
-        <Button
-            android:id="@+id/btnArtistas"
-            android:layout_height="0dp"
-            android:layout_width="match_parent"
-            android:layout_weight="0.5"
-            android:layout_margin="7dp"
-            android:background="@drawable/item_background"
-            android:text="@string/artistas"
-            android:textSize="20sp"/>
-    </LinearLayout>
+        android:layout_marginBottom="50dp"/>
 
 </LinearLayout>
+
+
+
