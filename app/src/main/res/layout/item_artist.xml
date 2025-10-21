@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:text="@string/textView"
         android:textSize="20sp"
+        android:visibility="gone"
         android:textStyle="bold"
         android:textColor="@color/gris" />
 
@@ -31,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/textView"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginTop="8dp"
         android:gravity="center" />

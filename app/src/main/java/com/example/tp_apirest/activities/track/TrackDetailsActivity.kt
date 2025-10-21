@@ -36,7 +36,7 @@ import kotlin.concurrent.thread
 
 class TrackDetailsActivity : AppCompatActivity() {
     private var mediaPlayer: MediaPlayer? = null
-    private var reproduciendo = false
+    private var estaListo = false
 
     lateinit var toolbar: Toolbar
     lateinit var tvTrackTitulo: TextView
@@ -127,12 +127,13 @@ class TrackDetailsActivity : AppCompatActivity() {
                     .into(imgFotoArtista)
 
                 contenedorArtista.setOnClickListener {
-                    val intent = Intent(this@TrackDetailsActivity, ArtistDetailsActivity::class.java)
-                      intent.putExtra(
-                       "ARTIST_ID",
-                       track.artist?.id ?: return@setOnClickListener
-                        )
-                            startActivity(intent)
+                    val intent =
+                        Intent(this@TrackDetailsActivity, ArtistDetailsActivity::class.java)
+                    intent.putExtra(
+                        "ARTIST_ID",
+                        track.artist?.id ?: return@setOnClickListener
+                    )
+                    startActivity(intent)
                 }
 
                 // Álbum
@@ -155,7 +156,7 @@ class TrackDetailsActivity : AppCompatActivity() {
                 ibPlayPause.setOnClickListener {
                     val previewUrl = track.preview
                     if (!previewUrl.isNullOrEmpty()) {
-                        if (reproduciendo) {
+                        if (mediaPlayer?.isPlaying == true) {
                             detenerPreview()
                         } else {
                             reproducirPreview(previewUrl)
@@ -211,45 +212,51 @@ class TrackDetailsActivity : AppCompatActivity() {
     }
 
     fun reproducirPreview(url: String) {
-        detenerPreview()
-        mediaPlayer = MediaPlayer().apply {
-            setAudioAttributes(
-                AudioAttributes.Builder()
-                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                    .setUsage(AudioAttributes.USAGE_MEDIA)
-                    .build()
-            )
-            setDataSource(url)
-            prepareAsync()
-            setOnPreparedListener {
-                start()
-                reproduciendo = true
+        if(mediaPlayer == null) {
+            mediaPlayer = MediaPlayer().apply {
+                setAudioAttributes(
+                    AudioAttributes.Builder()
+                        .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                        .setUsage(AudioAttributes.USAGE_MEDIA)
+                        .build()
+                )
+                setDataSource(url)
+                prepareAsync()
+                setOnPreparedListener {
+                    estaListo = true
+                    start()
+                    ibPlayPause.setImageResource(R.drawable.pause)
+                }
+                setOnCompletionListener {
+                    ibPlayPause.setImageResource(R.drawable.play)
+                }
+                setOnErrorListener { _, _, _ ->
+                    ibPlayPause.setImageResource(R.drawable.play)
+                    Toast.makeText(
+                        this@TrackDetailsActivity,
+                        "Error al reproducir preview",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    true
+                }
+            }
+        } else{
+            if(estaListo){
+                mediaPlayer?.start()
                 ibPlayPause.setImageResource(R.drawable.pause)
-            }
-            setOnCompletionListener {
-                ibPlayPause.setImageResource(R.drawable.play)
-                reproduciendo = false
-            }
-            setOnErrorListener { _, _, _ ->
-                reproduciendo = false
-                ibPlayPause.setImageResource(R.drawable.play)
-                Toast.makeText(this@TrackDetailsActivity, "Error al reproducir preview", Toast.LENGTH_SHORT).show()
-                true
             }
         }
     }
 
     fun detenerPreview() {
-        mediaPlayer?.stop()
-        mediaPlayer?.release()
-        mediaPlayer = null
-        reproduciendo = false
+        mediaPlayer?.pause()
         ibPlayPause.setImageResource(R.drawable.play)
     }
 
     override fun onDestroy() {
         super.onDestroy()
         mediaPlayer?.stop()
+        mediaPlayer?.release()
         mediaPlayer = null
     }
 

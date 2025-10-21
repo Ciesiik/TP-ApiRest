@@ -26,18 +26,20 @@
             >
 
             <TextView
+                android:id="@+id/tvTrackTitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tvTrackTitulo"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:text="Título"
-                android:layout_gravity="center"/>
+                android:text="@string/textView"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="15dp"
+                android:textAlignment="center"/>
 
             <LinearLayout
+                android:id="@+id/contenedorAlbum"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/contenedorAlbum"
                 android:orientation="vertical"
                 android:clickable="true"
                 android:focusable="true"
@@ -49,22 +51,22 @@
                     android:layout_height="200dp"
                     android:scaleType="centerCrop"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="15dp"/>
+                    android:layout_marginBottom="30dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="32dp"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
                     android:layout_marginTop="8dp"
                     >
 
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
                         android:id="@+id/tvAlbumTitulo"
-                        android:text="Álbum"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/textView"
                         android:textSize="18sp"
                         android:paddingStart="4dp"
                         android:paddingTop="3dp"
@@ -75,11 +77,10 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight=".4"
-                        android:text="Posición: X"
+                        android:text="@string/textView"
                         android:textSize="14sp"
-                        android:paddingTop="5dp"
-                        android:paddingStart="10dp"
-                        android:background="@drawable/bg_tv"/>
+                        android:background="@drawable/bg_tv"
+                        android:gravity="center"/>
                 </LinearLayout>
 
 
@@ -151,10 +152,10 @@
                     app:civ_border_color="@color/items" />
 
                 <TextView
+                    android:id="@+id/tvNombreArtista"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tvNombreArtista"
-                    android:text="Artista"
+                    android:text="@string/textView"
                     android:textSize="18sp"
                     android:layout_marginStart="12dp" />
             </LinearLayout>

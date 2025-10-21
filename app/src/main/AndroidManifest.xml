@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TPApiRest">
         <activity
+            android:name=".activities.SearchActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.FavoritosActivity"
             android:exported="false" />
         <activity
@@ -49,8 +52,7 @@
             android:exported="false" />
         <activity
             android:name=".activities.track.TracksActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>
